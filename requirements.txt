@@ -2,6 +2,7 @@ fastapi
 uvicorn
 openai
 pinecone
+pymupdf
 supabase
 sqlalchemy
 asyncpg
