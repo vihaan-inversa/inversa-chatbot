@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from openai import OpenAI
 from pinecone import Pinecone
 import os
+from db import log_chat
 
 # Init clients
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -88,4 +89,5 @@ A:"""
 async def handle_query(data: Query):
     chunks = semantic_search(data.query)
     answer = generate_answer(data.query, chunks)
+    log_chat(data.query, answer)
     return {"answer": answer}

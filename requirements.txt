@@ -2,3 +2,6 @@ fastapi
 uvicorn
 openai
 pinecone
+supabase
+sqlalchemy
+asyncpg
