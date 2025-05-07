@@ -4,12 +4,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from openai import OpenAI
 from pinecone import Pinecone
 import os
-from db import log_chat
-
+from embed_pdf import index
 # Init clients
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
-index = pc.Index("vihaan-chatbot")
+#index = pc.Index("vihaan-chatbot")
 
 # Constants
 EMBED_MODEL = "text-embedding-ada-002"
@@ -30,7 +29,7 @@ app.add_middleware(
 class Query(BaseModel):
     query: str
 
-# Helper: embed query
+# Helper: embed query 
 def embed(text):
     return client.embeddings.create(
         model=EMBED_MODEL,
