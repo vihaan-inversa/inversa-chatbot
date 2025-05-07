@@ -4,10 +4,11 @@ import fitz  # PyMuPDF
 from pinecone import Pinecone
 # --- 1. Embed function ---
 from openai import OpenAI
+from embed_pdf import index
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
-index = pc.Index("vihaan-chatbot")
+#index = pc.Index("vihaan-chatbot")
 
 MODEL = "text-embedding-ada-002"
 CHUNK_SIZE = 800  # chars (not tokens)
