@@ -4,11 +4,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from openai import OpenAI
 from pinecone import Pinecone
 import os
-from embed_pdf import index
+from embed_pdfs import index
 # Init clients
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
-#index = pc.Index("vihaan-chatbot")
+#index = pc.Index("inversa-chatbot")
 
 # Constants
 EMBED_MODEL = "text-embedding-ada-002"
