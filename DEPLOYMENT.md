@@ -81,5 +81,5 @@ Check the Render logs for any error messages. The application now has better err
 - ```
 curl -X POST https://inversa-chatbot.onrender.com/query \
  -H "Content-Type: application/json" \
- -d '{"query": "What is Inversa?"}'
+ -d '{"query": "What is Roland's phone number?"}'
 ```
