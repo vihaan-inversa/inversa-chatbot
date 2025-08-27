@@ -6,3 +6,4 @@ pymupdf
 supabase
 sqlalchemy
 asyncpg
+python-dotenv

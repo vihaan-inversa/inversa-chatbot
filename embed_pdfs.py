@@ -2,12 +2,16 @@ import os
 import openai
 import fitz  # PyMuPDF
 from pinecone import Pinecone
+from dotenv import load_dotenv
 # --- 1. Embed function ---
 from openai import OpenAI
 
+# Load environment variables from .env file
+load_dotenv(override=True)
+
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
-index = pc.Index("vihaan-chatbot")
+index = pc.Index("inversa-chatbot")
 
 MODEL = "text-embedding-ada-002"
 CHUNK_SIZE = 800  # chars (not tokens)
