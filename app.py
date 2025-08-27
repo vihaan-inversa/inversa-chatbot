@@ -5,20 +5,21 @@ from openai import OpenAI
 from pinecone import Pinecone
 import os
 from dotenv import load_dotenv
+from embed_pdfs import index
 
 # Load environment variables from .env file
 load_dotenv(override=True)
 
 # Import embed_pdfs module but don't access index directly
-import embed_pdfs
+
 # Init clients
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
 #index = pc.Index("inversa-chatbot")
 
 # Constants
-EMBED_MODEL = "text-embedding-ada-002"
-CHAT_MODEL  = "gpt-4"  # or "gpt-3.5-turbo"
+EMBED_MODEL = "text-embedding-3-small"
+CHAT_MODEL  = "gpt-4o-mini"  # or "gpt-3.5-turbo"
 
 # FastAPI setup
 app = FastAPI()

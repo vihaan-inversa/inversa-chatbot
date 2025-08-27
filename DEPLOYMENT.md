@@ -76,3 +76,10 @@ Check the Render logs for any error messages. The application now has better err
 - The application now handles missing Pinecone index gracefully
 - You can deploy without the index and create it later
 - The health endpoint will show you what's configured and what's missing
+
+## Testing
+- ```
+curl -X POST https://inversa-chatbot.onrender.com/query \
+ -H "Content-Type: application/json" \
+ -d '{"query": "What is Inversa?"}'
+```
