@@ -13,8 +13,8 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
 index = pc.Index("inversa-chatbot")
 
-MODEL = "text-embedding-ada-002"
-CHUNK_SIZE = 800  # chars (not tokens)
+MODEL = "text-embedding-3-small"
+CHUNK_SIZE = 200  # chars (not tokens)
 
 DOCS_DIR = "docs"  # your folder of PDFs and text files
 
@@ -31,7 +31,7 @@ def extract_chunks_from_pdf(pdf_path):
     text = full_text.strip().replace("\n", " ")
     for i in range(0, len(text), CHUNK_SIZE):
         chunk = text[i:i+CHUNK_SIZE]
-        if len(chunk) > 200:  # skip tiny junk
+        if len(chunk) >= 200:  # skip tiny junk
             chunks.append(chunk)
     return chunks
 
@@ -45,7 +45,7 @@ def extract_chunks_from_text(text_path):
     text = full_text.strip().replace("\n", " ")
     for i in range(0, len(text), CHUNK_SIZE):
         chunk = text[i:i+CHUNK_SIZE]
-        if len(chunk) > 200:  # skip tiny junk
+        if len(chunk) >= 200:  # skip tiny junk
             chunks.append(chunk)
     return chunks
 
